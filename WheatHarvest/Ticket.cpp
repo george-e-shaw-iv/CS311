@@ -1,7 +1,7 @@
 #include "Ticket.h"
 
 const double AVG_LBS_PER_BUSHEL = 60;
-const double AVG_MOISTURE_LEVEL = 60;
+const double AVG_MOISTURE_LEVEL = 12;
 
 bool Ticket::setNumber(std::string input) {
 	if(input == "") {
@@ -36,6 +36,7 @@ bool Ticket::setMoistureLevel(double input) {
 	}
 
 	this->moistureLevel = input;
+	return true;
 }
 
 bool Ticket::setForiegnMaterial(double input) {
@@ -44,6 +45,11 @@ bool Ticket::setForiegnMaterial(double input) {
 	}
 
 	this->foriegnMaterial = input;
+	return true;
+}
+
+std::string Ticket::getNumber() {
+	return this->number;
 }
 
 double Ticket::getGrossWeight() {
@@ -63,25 +69,30 @@ double Ticket::getForiegnMaterial() {
 }
 
 double Ticket::calculateNetWeight() {
-	return (this->grossWeight - this->tareWeight);
+	double r = (this->grossWeight - this->tareWeight);
+	return r;
 }
 
 double Ticket::calculateGrossBushels() {
-	return (this->calculateNetWeight / AVG_LBS_PER_BUSHEL);
+	double r =  (this->calculateNetWeight() / AVG_LBS_PER_BUSHEL);
+	return r;
 }
 
 double Ticket::calculateMoistureDockage() {
-	if(this->moistureLevel <= 12) {
+	if(this->moistureLevel <= AVG_MOISTURE_LEVEL) {
 		return 0;
 	}
 
-	return (this->calculateGrossBushels() * (this->moistureLevel/100));
+	double r = (this->calculateGrossBushels() * ((this->moistureLevel - AVG_MOISTURE_LEVEL)/100));
+	return r;
 }
 
 double Ticket::calculateForiegnDockage() {
-	return (this->calculateGrossBushels() * (this->foriegnMaterial/100));
+	double r = (this->calculateGrossBushels() * (this->foriegnMaterial/100));
+	return r;
 }
 
 double Ticket::calculateNetBushels() {
-	return (this->calculateGrossBushels() - this->calculateMoistureDockage() - this->calculateForiegnDockage());
+	double r = (this->calculateGrossBushels() - this->calculateMoistureDockage() - this->calculateForiegnDockage());
+	return r;
 }

@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Ticket.cpp"
+#include "Ticket.h"
 
 int main() {
 	Ticket myTicket;

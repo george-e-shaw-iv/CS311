@@ -10,14 +10,15 @@ public:
 	bool setForiegnMaterial(double input);
 
 	/* GETTERS */
+	std::string getNumber();
 	double getGrossWeight();
 	double getTareWeight();
 	double getMoistureLevel();
 	double getForiegnMaterial();
 
 	/* CALCULATIONS */
-	double caclulateNetWeight();
-	double cacluateGrossBushels();
+	double calculateNetWeight();
+	double calculateGrossBushels();
 	double calculateMoistureDockage();
 	double calculateForiegnDockage();
 	double calculateNetBushels();

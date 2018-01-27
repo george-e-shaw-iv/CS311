@@ -6,86 +6,67 @@
  */
 
 #include <iostream>
+#include <vector>
+#include <limits>
+#include <algorithm>
 #include "Ticket.h"
 
 int main() {
-	Ticket myTicket;
-
-	std::string stringInput;
-	double doubleInput;
-	bool inputError;
+	double inputGrossWeight, inputTareWeight, inputMoistureLevel, inputForiegnMaterial, netBushels, grossBushels;
+	std::vector<Ticket> tickets;
 
 	while(true) {
+		if(tickets.size() > 0) {
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		}
+
+		std::string ticketNumber;
+
 		std::cout << "Ticket Number: ";
-		std::cin >> stringInput;
-
-		inputError = myTicket.setNumber(stringInput);
-		if(inputError) {
+		std::getline(std::cin, ticketNumber);
+			
+		if(ticketNumber == "") {
 			break;
 		}
 
-		std::cout << "Please enter a valid alpha-numeric ticket number." << std::endl;
-	}
-
-	while(true) {
 		std::cout << "Gross weight (lbs): ";
-		std::cin >> doubleInput;
+		std::cin >> inputGrossWeight;
 
-		inputError = myTicket.setGrossWeight(doubleInput);
-		if(inputError) {
-			break;
-		}
-
-		std::cout << "Please enter a valid non-zero and non-negative gross weight." << std::endl;
-	}
-
-	while(true) {
 		std::cout << "Tare weight (lbs): ";
-		std::cin >> doubleInput;
+		std::cin >> inputTareWeight;
 
-		inputError = myTicket.setTareWeight(doubleInput);
-		if(inputError) {
-			break;
-		}
-
-		std::cout << "Please enter a valid non-zero and non-negative tare weight." << std::endl;
-	}
-
-	while(true) {
 		std::cout << "Moisture level (%): ";
-		std::cin >> doubleInput;
+		std::cin >> inputMoistureLevel;
 
-		inputError = myTicket.setMoistureLevel(doubleInput);
-		if(inputError) {
-			break;
-		}
+		std::cout << "Foreign material (%): ";
+		std::cin >> inputForiegnMaterial;
 
-		std::cout << "Please enter a valid moisture percentage between 0-100." << std::endl;
-	}
-
-	while(true) {
-		std::cout << "Foriegn material (%): ";
-		std::cin >> doubleInput;
-
-		inputError = myTicket.setForiegnMaterial(doubleInput);
-		if(inputError) {
-			break;
-		}
-
-		std::cout << "Please enter a valid foriegn matieral percentage between 0-100." << std::endl;
+		Ticket myTicket(ticketNumber, inputGrossWeight, inputTareWeight, inputMoistureLevel, inputForiegnMaterial);
+		tickets.push_back(myTicket);
+		
+		std::cout << std::endl;
 	}
 
 	std::cout.precision(2);
-	std::cout << std::fixed;
+	std::cout << std::fixed << std::endl;
 
-	std::cout << "Ticket " << myTicket.getNumber() << ":" << std::endl;
-	std::cout << "\t" << myTicket.getGrossWeight() << " Gross Weight" << std::endl;
-	std::cout << "\t" << myTicket.getTareWeight() << " Tare Weight" << std::endl;
-	std::cout << "\t" << myTicket.calculateNetWeight() << " Net Weight" << std::endl << std::endl;
-	std::cout << "\t" << myTicket.calculateGrossBushels() << " Gross Bushels" << std::endl;
-	std::cout << "\t" << myTicket.calculateMoistureDockage() << " Moisture Level (" << myTicket.getMoistureLevel() <<
-		"%)" << std::endl;
-	std::cout << "\t" << myTicket.calculateForiegnDockage() << " Foriegn Material (" << myTicket.getForiegnMaterial() <<
-		"%)" << std::endl;
-	std::cout << "\t" << myTicket.calculateNetBushels() << " Net Bushels" << std::endl;
+	for(unsigned int i = 0; i < tickets.size(); i++) {
+		grossBushels += tickets[i].calculateGrossBushels();
+		netBushels += tickets[i].calculateNetBushels();
+
+		std::cout << "Ticket " << tickets[i].getNumber() << ":" << std::endl;
+		std::cout << "\t" << tickets[i].getGrossWeight() << " Gross Weight" << std::endl;
+		std::cout << "\t" << tickets[i].getTareWeight() << " Tare Weight" << std::endl;
+		std::cout << "\t" << tickets[i].calculateNetWeight() << " Net Weight" << std::endl << std::endl;
+		std::cout << "\t" << tickets[i].calculateGrossBushels() << " Gross Bushels" << std::endl;
+		std::cout << "\t" << tickets[i].calculateMoistureDockage() << " Moisture Level (" << tickets[i].getMoistureLevel() <<
+			"%)" << std::endl;
+		std::cout << "\t" << tickets[i].calculateForiegnDockage() << " Foriegn Material (" << tickets[i].getForiegnMaterial() <<
+			"%)" << std::endl;
+		std::cout << "\t" << tickets[i].calculateNetBushels() << " Net Bushels" << std::endl << std::endl;
+	}
+
+	std::cout << "Wheat Harvest Summary Totals" << std::endl;
+	std::cout << "\t" << grossBushels << " Gross Bushels" << std::endl;
+	std::cout << "\t" << netBushels << " Net Bushels" << std::endl;
 }

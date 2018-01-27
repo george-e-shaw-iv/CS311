@@ -10,50 +10,9 @@
 const double AVG_LBS_PER_BUSHEL = 60;
 const double AVG_MOISTURE_LEVEL = 12;
 
-bool Ticket::setNumber(std::string input) {
-	if(input == "") {
-		return false;
-	}
-
-	this->number = input;
-	return true;
-}
-
-bool Ticket::setGrossWeight(double input) {
-	if(input <= 0) {
-		return false;
-	}
-
-	this->grossWeight = input;
-	return true;
-}
-
-bool Ticket::setTareWeight(double input) {
-	if(input <= 0) {
-		return false;
-	}
-
-	this->tareWeight = input;
-	return true;
-}
-
-bool Ticket::setMoistureLevel(double input) {
-	if(input < 0 || input > 100) {
-		return false;
-	}
-
-	this->moistureLevel = input;
-	return true;
-}
-
-bool Ticket::setForiegnMaterial(double input) {
-	if(input < 0 || input > 100) {
-		return false;
-	}
-
-	this->foriegnMaterial = input;
-	return true;
-}
+Ticket::Ticket(std::string reference, double grossWeight, double tareWeight, double moistureLevel, double
+		foriegnMaterial) : number(reference), grossWeight(grossWeight), tareWeight(tareWeight),
+	moistureLevel(moistureLevel), foriegnMaterial(foriegnMaterial) {}
 
 std::string Ticket::getNumber() {
 	return this->number;

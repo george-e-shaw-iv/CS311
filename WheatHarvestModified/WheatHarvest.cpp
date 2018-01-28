@@ -2,13 +2,14 @@
  * File Name: WheatHarvest.cpp
  * Author: George Shaw
  * Student ID: G829G576
- * Assignment Number: 1
+ * Assignment Number: 2
  */
 
 #include <iostream>
 #include <vector>
 #include <limits>
 #include <algorithm>
+
 #include "Ticket.h"
 
 int main() {
@@ -16,13 +17,14 @@ int main() {
 	std::vector<Ticket> tickets;
 
 	while(true) {
+		// Flush cin buffer if it is not the first entry
 		if(tickets.size() > 0) {
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		}
 
 		std::string ticketNumber;
 
-		std::cout << "Ticket Number: ";
+		std::cout << "Ticket Number (alphanumeric): ";
 		std::getline(std::cin, ticketNumber);
 			
 		if(ticketNumber == "") {

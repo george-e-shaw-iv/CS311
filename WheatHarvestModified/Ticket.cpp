@@ -2,7 +2,7 @@
  * File Name: Ticket.cpp
  * Author: George Shaw
  * Student ID: G829G576
- * Assignment Number: 1
+ * Assignment Number: 2
  */
 
 #include "Ticket.h"

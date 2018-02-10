@@ -80,7 +80,16 @@ int main() {
 }
 
 /*
- * Documentation for this friend function can be located in the Ticket.h file.
+ * Overloaded insertion operator (<<) is used to output a reciept of the ticket
+ * with the help of the private member function toString.
+ *
+ * @param "os" of type pointer to ostream
+ *		The stream attempting to output the Ticket reciept
+ * @param "t" of type constant pointer to Ticket
+ *		The ticket object attempting to be outputted
+ *
+ * @return ostream
+ *		The returned manipulated stream
  */
 std::ostream& operator<<(std::ostream &os, const Ticket &t) {
 	os << t.toString();

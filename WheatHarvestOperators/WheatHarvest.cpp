@@ -27,7 +27,7 @@ int main() {
 
 		std::cout << "Ticket Number " << tickets.size() + 1 <<  " (alphanumeric): ";
 		std::getline(std::cin, ticketNumber);
-			
+
 		if (ticketNumber == "") {
 			break;
 		}
@@ -45,7 +45,7 @@ int main() {
 		std::cin >> inputForiegnMaterial;
 
 		Ticket myTicket(ticketNumber, inputGrossWeight, inputTareWeight, inputMoistureLevel, inputForiegnMaterial);
-		
+
 		if (tickets.size() > 0) {
 			duplicate = false;
 			for (unsigned int i = 0; i < tickets.size(); i++) {
@@ -60,7 +60,7 @@ int main() {
 		} else {
 			tickets.push_back(myTicket);
 		}
-		
+
 		std::cout << std::endl;
 	}
 
@@ -77,21 +77,4 @@ int main() {
 	std::cout << std::fixed << "Wheat Harvest Summary Totals" << std::endl;
 	std::cout << "\t" << grossBushels << " Gross Bushels" << std::endl;
 	std::cout << "\t" << netBushels << " Net Bushels" << std::endl;
-}
-
-/*
- * Overloaded insertion operator (<<) is used to output a reciept of the ticket
- * with the help of the private member function toString.
- *
- * @param "os" of type pointer to ostream
- *		The stream attempting to output the Ticket reciept
- * @param "t" of type constant pointer to Ticket
- *		The ticket object attempting to be outputted
- *
- * @return ostream
- *		The returned manipulated stream
- */
-std::ostream& operator<<(std::ostream &os, const Ticket &t) {
-	os << t.toString();
-	return os;
 }

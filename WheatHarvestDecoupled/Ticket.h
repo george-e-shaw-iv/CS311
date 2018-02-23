@@ -39,19 +39,25 @@ public:
 	int getTareWeight() const;
 
 	// Function to return net weight (lbs)
-	int getNetWeight() const;
+	int calculateNetWeight() const;
 
 	// Function to return gross bushels (lbs)
-	double getGrossBushels() const;
+	double calculateGrossBushels() const;
 
 	// Function to return moisture level dockage (lbs bushels)
-	double getMoistureLevelDockage() const;
+	double calculateMoistureDockage() const;
 
 	// Function to return foreign material dockage (lbs bushels)
-	double getForeignMaterialDockage() const;
+	double calculateForeignMaterialDockage() const;
 
 	// Function to return net bushels (lbs)
-	double getNetBushels() const;
+	double calculateNetBushels() const;
+
+	// Grain foreign material accessor (percent)
+	double getForeignMaterial() const;
+
+	// Grain moisture level accessor (percent)
+	double getMoistureLevel() const;
 
 	// Returns a string representing ticket's attributes (in form of a receipt)
 	std::string toString() const;

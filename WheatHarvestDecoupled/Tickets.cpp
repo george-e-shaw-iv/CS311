@@ -1,7 +1,8 @@
 #include "Tickets.h"
 
-Tickets::Tickets() : ticketArrayCapacity(0), ticketArraySize(0)
-{}
+Tickets::Tickets() : ticketArrayCapacity(0), ticketArraySize(0) {
+	this->ticketArray = new Ticket[this->ticketArrayCapacity];
+}
 
 Tickets::Tickets(const Tickets& tickets) {
 	this->ticketArray = new Ticket[tickets.ticketArrayCapacity];

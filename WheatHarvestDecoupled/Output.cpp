@@ -4,7 +4,7 @@
 #include "Output.h"
 
 void Output::outputTickets(const Tickets& tickets) {
-	for(unsigned int i = 0; i < tickets.size(); i++) {
+	for(int i = 0; i < tickets.size(); i++) {
 		std::cout << tickets[i] << std::endl;
 	}
 }
@@ -13,8 +13,9 @@ void Output::outputSummary(const Tickets& tickets) {
 	std::ios_base::fmtflags f(std::cout.flags());
 
 	double grossBushels = 0, netBushels = 0;
-	for(unsigned int i = 0; i < tickets.size(); i++) {
-		// add those up in here
+	for(int i = 0; i < tickets.size(); i++) {
+		grossBushels += tickets[i].calculateGrossBushels();
+		netBushels += tickets[i].calculateNetBushels();
 	}
 
 	std::cout.precision(2);

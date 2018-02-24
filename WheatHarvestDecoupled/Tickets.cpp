@@ -7,7 +7,7 @@ Tickets::Tickets(const Tickets& tickets) {
 	this->ticketArray = new Ticket[tickets.ticketArrayCapacity];
 
 	for(unsigned int i = 0; i < tickets.ticketArraySize; i++) {
-		this->ticketsArray[i] = tickets.ticketsArray[i];
+		this->ticketArray[i] = tickets.ticketArray[i];
 	}
 
 	this->ticketArrayCapacity = tickets.ticketArrayCapacity;
@@ -18,11 +18,19 @@ Tickets::~Tickets() {
 	delete[] this->ticketArray;
 }
 
-// idk what to do here
 const Tickets& Tickets::operator =(const Tickets& tickets) {
 	if(&tickets == this) {
 		return *this;
 	}
+
+	this->ticketArray = new Ticket[tickets.ticketArrayCapacity];
+
+	for(unsigned int i = 0; i < tickets.ticketArraySize; i++) {
+		this->ticketArray[i] = tickets.ticketArray[i];
+	}
+
+	this->ticketArrayCapacity = tickets.ticketArrayCapacity;
+	this->ticketArraySize = tickets.ticketArraySize;
 
 	return *this;
 }
@@ -53,7 +61,7 @@ void Tickets::add(const Ticket& ticket) {
 		delete[] this->ticketArray;
 		this->ticketArray = newTicketArray;
 
-		return
+		return;
 	}
 
 	this->ticketArray[this->ticketArraySize - 1] = ticket;

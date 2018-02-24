@@ -5,7 +5,7 @@ namespace {
 	const double IDEAL_MOISTURE_LEVEL = 12.0;
 }
 
-Grain::Grain() : moistureLevel(0), foriegnMaterial(0)
+Grain::Grain() : moistureLevel(0), foreignMaterial(0)
 {}
 
 Grain::Grain(double moistureLevel, double foreignMaterial) : moistureLevel(moistureLevel),

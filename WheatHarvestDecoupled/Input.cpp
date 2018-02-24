@@ -4,7 +4,9 @@
 #include "Input.h"
 
 void Input::inputTickets(Tickets& tickets) {
-	std::cin.ignore(256, '\n');
+	if(tickets.size() > 0) {
+		std::cin.ignore(256, '\n');
+	}
 
 	std::string number;
 	double inputGrossWeight, inputTareWeight, inputMoistureLevel, inputForeignMaterial;
@@ -32,7 +34,7 @@ void Input::inputTickets(Tickets& tickets) {
 	if (tickets.size() > 0) {
 		bool duplicate = false;
 
-		for(unsigned int i = 0; i < tickets.size(); i++) {
+		for(int i = 0; i < tickets.size(); i++) {
 			if(tickets[i] == proposedTicket) {
 				duplicate = true;
 				break;

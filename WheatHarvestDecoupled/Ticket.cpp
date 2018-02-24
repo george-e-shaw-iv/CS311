@@ -65,7 +65,8 @@ double Ticket::getMoistureLevel() const {
  *
  * @return void
  */
-Ticket::Ticket(std::string reference, double grossWeight, double tareWeight, Grain sample) : number(reference), grossWeight(grossWeight), tareWeight(tareWeight), sample(sample) {
+Ticket::Ticket(const std::string& number, const int grossWeight, const int tareWeight, const Grain& sample) :
+	number(number), grossWeight(grossWeight), tareWeight(tareWeight), sample(sample) {
       time(&this->timestamp);
 }
 
@@ -80,8 +81,8 @@ Ticket::Ticket(std::string reference, double grossWeight, double tareWeight, Gra
  *		True if calling Ticket and parameter Ticket have the same ticketNumber
  *		member variable.
  */
-bool Ticket::operator==(const Ticket compareTicket) {
-	return (this->number == compareTicket.number);
+bool Ticket::operator ==(const Ticket& ticket) const {
+	return (this->number == ticket.number);
 }
 
 /*
@@ -104,9 +105,9 @@ std::string Ticket::toString() const {
 	ss << "\t" << this->tareWeight << " Tare Weight" << std::endl;
 	ss << "\t" << this->calculateNetWeight() << " Net Weight" << std::endl << std::endl;
 	ss << "\t" << this->calculateGrossBushels() << " Gross Bushels" << std::endl;
-	ss << "\t" << this->calculateMoistureDockage() << " Moisture Level (" << this->moistureLevel << "%)" <<
+	ss << "\t" << this->calculateMoistureDockage() << " Moisture Level (" << this->getMoistureLevel() << "%)" <<
 		std::endl;
-	ss << "\t" << this->calculateForiegnDockage() << " Foriegn Material (" << this->foriegnMaterial << "%)" <<
+	ss << "\t" << this->calculateForeignMaterialDockage() << " Foriegn Material (" << this->getForeignMaterial() << "%)" <<
 		std::endl;
 	ss << "\t" << this->calculateNetBushels() << " Net Bushels" << std::endl;
 
@@ -129,7 +130,7 @@ std::string Ticket::getNumber() const {
  * @return double
  *		The value of the member variable "grossWeight"
  */
-double Ticket::getGrossWeight() const {
+int Ticket::getGrossWeight() const {
 	return this->grossWeight;
 }
 
@@ -139,7 +140,7 @@ double Ticket::getGrossWeight() const {
  * @return double
  *		The value of the member variable "tareWeight"
  */
-double Ticket::getTareWeight() const {
+int Ticket::getTareWeight() const {
 	return this->tareWeight;
 }
 
@@ -149,7 +150,7 @@ double Ticket::getTareWeight() const {
  * @return double
  *		Member variable "grossWeight" minus member variable "tareWeight"
  */
-double Ticket::calculateNetWeight() const {
+int Ticket::calculateNetWeight() const {
 	return (this->grossWeight - this->tareWeight);
 }
 

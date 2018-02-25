@@ -1,9 +1,26 @@
+/*
+ * File Name: Tickets.cpp
+ * Author: George Shaw
+ * Student ID: G829G576
+ * Assignment Number: 4
+ */
+
 #include "Tickets.h"
 
+/*
+	Tickets default constructor initializes member variables to 0 values
+*/
 Tickets::Tickets() : ticketArrayCapacity(0), ticketArraySize(0) {
 	this->ticketArray = new Ticket[this->ticketArrayCapacity];
 }
 
+/*
+	Tickets copy constructor allows a new instance of the class to be
+	initailized with another tickets class as a parameter.
+
+	@param "tickets" of type Tickets
+		The class to copy into the new instance of the class
+*/
 Tickets::Tickets(const Tickets& tickets) {
 	this->ticketArray = new Ticket[tickets.ticketArrayCapacity];
 
@@ -15,10 +32,20 @@ Tickets::Tickets(const Tickets& tickets) {
 	this->ticketArraySize = tickets.ticketArraySize;
 }
 
+/*
+	Tickets deconstructor makes sure to de-allocate free memory
+*/
 Tickets::~Tickets() {
 	delete[] this->ticketArray;
 }
 
+/*
+	Overloaded tickets assignment operator allows a new instance of
+	the class to be copied into the left side of the equals sign
+
+	@param "tickets" of type Tickets
+		The old instance of the class ready to be assigned
+*/
 const Tickets& Tickets::operator =(const Tickets& tickets) {
 	if(&tickets == this) {
 		return *this;
@@ -36,6 +63,13 @@ const Tickets& Tickets::operator =(const Tickets& tickets) {
 	return *this;
 }
 
+/*
+	Tickets index operator overload allows tickets to be read from
+	an index.
+
+	@param "index" of type unsigned int
+		The index of the ticket to read
+*/
 Ticket Tickets::operator [](unsigned int index) const {
 	if(index <= ticketArraySize) {
 		return ticketArray[index];
@@ -47,6 +81,12 @@ int Tickets::size() const {
 	return this->ticketArraySize;
 }
 
+/*
+	Function add allows addition of more tickets into the class
+
+	@param "ticket" of type Ticket
+		The ticket to add to the class' internal array
+*/
 void Tickets::add(const Ticket& ticket) {
 	this->ticketArraySize++;
 

@@ -1,8 +1,21 @@
+/*
+ * File Name: Input.cpp
+ * Author: George Shaw
+ * Student ID: G829G576
+ * Assignment Number: 4
+ */
+
 #include <iostream>
 #include <string>
 
 #include "Input.h"
 
+/*
+	Function inputTickets encapsulates the input of tickets
+
+	@param "tickets" of type Tickets
+		The tickets class to input the tickets into
+*/
 void Input::inputTickets(Tickets& tickets) {
 	while(true) {
 		if(tickets.size() > 0) {

@@ -2,7 +2,7 @@
  * File Name: Ticket.cpp
  * Author: George Shaw
  * Student ID: G829G576
- * Assignment Number: 3
+ * Assignment Number: 4
  */
 
 #include <sstream>
@@ -27,18 +27,42 @@ std::ostream& operator<<(std::ostream &os, const Ticket &t) {
 	return os;
 }
 
+/*
+	Ticket default constructor sets the timestamp member variable to the current
+	time and the rest of the member variables to 0 values.
+*/
 Ticket::Ticket() : number(""), grossWeight(0), tareWeight(0) {
    time(&this->timestamp);
 }
 
+/*
+	Function getTimestamp returns the member variable timestamp.
+
+	@return time_t
+		The timestamp member variable
+*/
 std::time_t Ticket::getTimestamp() const {
    return this->timestamp;
 }
 
+/*
+	Function getForeignMaterial returns the foreign material percentage attached to
+	the grain member variable
+
+	@return double
+		The foreign material percentage of the grain member variable
+*/
 double Ticket::getForeignMaterial() const {
    return this->sample.getForeignMaterial();
 }
 
+/*
+	Function getMoistureLevel returns the moisture level percentage attached to
+	the grain member variable
+
+	@return double
+		The moisture level percentage of the grain member variable
+*/
 double Ticket::getMoistureLevel() const {
    return this->sample.getMoistureLevel();
 }
@@ -55,13 +79,8 @@ double Ticket::getMoistureLevel() const {
  * @param "tareWeight" of type double
  *		Intial value of member variable "tareWeight". Indicates the
  *		weight of the truck after its load has been dumped.
- * @param "moistureLevel" of type double
- *		Initial value of member variable "moistureLevel". Indicates
- *		moisture level of the wheat intake in the form of a percentage.
- * @param "foriegnMaterial" of type double
- *		Initial value of member variable "foriegnMaterial". Indicates
- *		the amount of foriegn material in the wheat intake in the form
- *		of a percetnage.
+ * @param "sample" of type Grain
+ *		The grain sample attached to the ticket
  *
  * @return void
  */

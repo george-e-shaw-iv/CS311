@@ -1,8 +1,8 @@
 /*
- * Tickets.h
- *
- *  Created on: Feb 8, 2018
- *      Author: Joe
+ *	File Name: Tickets.h
+ *	Author: George Shaw
+ *	Student ID: G829G576
+ *	Assignment Number: 5
  */
 
 #ifndef TICKETS_H_
@@ -10,9 +10,6 @@
 
 #include "Ticket.h"
 
-/**
- * The Tickets class identifies properties of a list (array) of tickets
- **/
 class Tickets {
 public:
 	// Constructor default
@@ -43,4 +40,4 @@ private:
 	unsigned int ticketArraySize;		// Number of tickets added to the array
 };
 
-#endif /* TICKETS_H_ */
+#endif

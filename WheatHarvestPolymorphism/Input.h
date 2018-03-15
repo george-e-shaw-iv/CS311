@@ -1,8 +1,8 @@
 /*
- * Input.h
- *
- *  Created on: Feb 11, 2018
- *      Author: Joe
+ *	File Name: Input.h
+ *	Author: George Shaw
+ *	Student ID: G829G576
+ *	Assignment Number: 5
  */
 
 #ifndef INPUT_H_

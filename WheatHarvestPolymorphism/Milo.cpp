@@ -1,26 +1,26 @@
 /*
- *	File Name: Wheat.cpp
+ *	File Name: Milo.cpp
  *	Author: George Shaw
  *	Student ID: G829G576
  *	Assignment Number: 5
  */
  
-#include "Wheat.h"
+#include "Milo.h"
 
 namespace {
-	const double AVG_TEST_WEIGHT = 60.0;
-	const double IDEAL_MOISTURE_LEVEL = 13.5;
+	const double AVG_TEST_WEIGHT = 56.0;
+	const double IDEAL_MOISTURE_LEVEL = 13.0;
 }
 
 /*
-	Default constructor for class wheat which uses constructor delegation
+	Default constructor for class milo which uses constructor delegation
 	use the constructor of its parent class, grain.
 */
-Wheat::Wheat() : Grain(0, 0)
+Milo::Milo() : Grain(0, 0)
 {}
 
 /*
-	Overloaded constructor for class wheat which uses constructor delegation
+	Overloaded constructor for class milo which uses constructor delegation
 	to make use of its parent class, grain.
 	
 	@param "moistureLevel" of type double
@@ -28,16 +28,16 @@ Wheat::Wheat() : Grain(0, 0)
 	@param "foreignMaterial" of type double
 		The value to initailize member variable foreignMaterial
 */
-Wheat::Wheat(double moistureLevel, double foreignMaterial) : Grain(moistureLevel, foreignMaterial)
+Milo::Milo(double moistureLevel, double foreignMaterial) : Grain(moistureLevel, foreignMaterial)
 {}
 
 /*
 	Function clone returns a copy of pointer to the calling object
 	
-	@return &Wheat
+	@return &Milo
 		A copy of the pointer of the calling object.
 */
-&Wheat Wheat::clone() const {
+&Milo Milo::clone() const {
 	that = *this;
 	return &that;
 }
@@ -47,30 +47,30 @@ Wheat::Wheat(double moistureLevel, double foreignMaterial) : Grain(moistureLevel
 	class name
 	
 	@return sting
-		"Wheat", the name of the class
+		"Milo", the name of the class
 */
-std::string Wheat::getType() const {
-	return "Wheat";
+std::string Milo::getType() const {
+	return "Milo";
 }
 
 /*
 	Function getIdealMoistureLevel returns the constant ideal moisture level
-	of wheat
+	of milo
 	
 	@return const double
-		The ideal moisture level of wheat
+		The ideal moisture level of milo
 */
-const double Wheat::getIdealMoistureLevel() const {
+const double Milo::getIdealMoistureLevel() const {
 	return IDEAL_MOISTURE_LEVEL;
 }
 
 /*
 	Function getAverageTestWeight returns the constant average test weight
-	of wheat
+	of milo
 	
 	@return const double
-		The average test weight of wheat
+		The average test weight of milo
 */
-const double Wheat::getAverageTestWeight() const {
+const double Milo::getAverageTestWeight() const {
 	return AVG_TEST_WEIGHT;
 }

@@ -1,32 +1,32 @@
 /*
- *	File Name: Wheat.h
+ *	File Name: Milo.h
  *	Author: George Shaw
  *	Student ID: G829G576
  *	Assignment Number: 5
  */
 
-#ifndef WHEAT_H_
-#define WHEAT_H_
+#ifndef MILO_H_
+#define MILO_H_
 
 #include "Grain.h"
 
-class Wheat : public Grain {
+class Milo : public Grain {
 	// Default constructor definition
-	Wheat();
+	Milo();
 	
 	// Overloaded class constructor to initialize protected variables within the base class
-	Wheat(double moistureLevel, double foreignMaterial);
+	Milo(double moistureLevel, double foreignMaterial);
 	
 	// Return a clone of the object
-	&Wheat clone() const;
+	&Milo clone() const;
 	
 	// Returns the string representation of the derived class name
 	std::string getType() const;
 	
-	// Returns the constant for ideal moisture level for wheat
+	// Returns the constant for ideal moisture level for milo
 	const double getIdealMoistureLevel() const;
 	
-	// Returns the constant for average test weight per bushel for wheat
+	// Returns the constant for average test weight per bushel for milo
 	const double getAverageTestWeight() const;
 }
 

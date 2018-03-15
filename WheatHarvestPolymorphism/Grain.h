@@ -1,18 +1,15 @@
 /*
- * Grain.h
- *
- *  Created on: Feb 9, 2018
- *      Author: Joe
+ *	File Name: Grain.h
+ *	Author: George Shaw
+ *	Student ID: G829G576
+ *	Assignment Number: 5
  */
-
-#include <string>
 
 #ifndef GRAIN_H_
 #define GRAIN_H_
 
-/**
- * The Grain class identifies properties of a sample of grain
- */
+#include <string>
+
 class Grain {
 public:
 	// Constructor default
@@ -45,10 +42,10 @@ public:
 	// Defined member function to make use of the pure virtual function getType
 	std::string toString() const;
 
-private:
+protected:
 	// Member variables
 	double moistureLevel;
 	double foreignMaterial;
 };
 
-#endif /* GRAIN_H_ */
+#endif

@@ -1,8 +1,8 @@
 /*
- * Ticket.h
- *
- *  Created on: Jan 13, 2018
- *      Author: Joe
+ *	File Name: Ticket.h
+ *	Author: George Shaw
+ *	Student ID: G829G576
+ *	Assignment Number: 5
  */
 
 #ifndef TICKET_H_
@@ -14,9 +14,6 @@
 
 #include "Grain.h"
 
-/**
- * The Ticket class identifies properties of a ticket
- **/
 class Ticket {
 public:
 	// Constructor default
@@ -77,4 +74,4 @@ private:
 	Grain sample;
 };
 
-#endif /* TICKET_H_ */
+#endif

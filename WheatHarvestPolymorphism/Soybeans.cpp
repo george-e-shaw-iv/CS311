@@ -1,26 +1,26 @@
 /*
- *	File Name: Wheat.cpp
+ *	File Name: Soybeans.cpp
  *	Author: George Shaw
  *	Student ID: G829G576
  *	Assignment Number: 5
  */
  
-#include "Wheat.h"
+#include "Soybeans.h"
 
 namespace {
 	const double AVG_TEST_WEIGHT = 60.0;
-	const double IDEAL_MOISTURE_LEVEL = 13.5;
+	const double IDEAL_MOISTURE_LEVEL = 13.0;
 }
 
 /*
-	Default constructor for class wheat which uses constructor delegation
+	Default constructor for class soybeans which uses constructor delegation
 	use the constructor of its parent class, grain.
 */
-Wheat::Wheat() : Grain(0, 0)
+Soybeans::Soybeans() : Grain(0, 0)
 {}
 
 /*
-	Overloaded constructor for class wheat which uses constructor delegation
+	Overloaded constructor for class soybeans which uses constructor delegation
 	to make use of its parent class, grain.
 	
 	@param "moistureLevel" of type double
@@ -28,16 +28,16 @@ Wheat::Wheat() : Grain(0, 0)
 	@param "foreignMaterial" of type double
 		The value to initailize member variable foreignMaterial
 */
-Wheat::Wheat(double moistureLevel, double foreignMaterial) : Grain(moistureLevel, foreignMaterial)
+Soybeans::Soybeans(double moistureLevel, double foreignMaterial) : Grain(moistureLevel, foreignMaterial)
 {}
 
 /*
 	Function clone returns a copy of pointer to the calling object
 	
-	@return &Wheat
+	@return &Soybeans
 		A copy of the pointer of the calling object.
 */
-&Wheat Wheat::clone() const {
+&Soybeans Soybeans::clone() const {
 	that = *this;
 	return &that;
 }
@@ -47,30 +47,30 @@ Wheat::Wheat(double moistureLevel, double foreignMaterial) : Grain(moistureLevel
 	class name
 	
 	@return sting
-		"Wheat", the name of the class
+		"Soybeans", the name of the class
 */
-std::string Wheat::getType() const {
-	return "Wheat";
+std::string Soybeans::getType() const {
+	return "Soybeans";
 }
 
 /*
 	Function getIdealMoistureLevel returns the constant ideal moisture level
-	of wheat
+	of soybeans
 	
 	@return const double
-		The ideal moisture level of wheat
+		The ideal moisture level of soybeans
 */
-const double Wheat::getIdealMoistureLevel() const {
+const double Soybeans::getIdealMoistureLevel() const {
 	return IDEAL_MOISTURE_LEVEL;
 }
 
 /*
 	Function getAverageTestWeight returns the constant average test weight
-	of wheat
+	of soybeans
 	
 	@return const double
-		The average test weight of wheat
+		The average test weight of soybeans
 */
-const double Wheat::getAverageTestWeight() const {
+const double Soybeans::getAverageTestWeight() const {
 	return AVG_TEST_WEIGHT;
 }

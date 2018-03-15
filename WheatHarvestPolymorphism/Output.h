@@ -1,8 +1,8 @@
 /*
- * Output.h
- *
- *  Created on: Feb 11, 2018
- *      Author: Joe
+ *	File Name: Output.h
+ *	Author: George Shaw
+ *	Student ID: G829G576
+ *	Assignment Number: 5
  */
 
 #ifndef OUTPUT_H_
@@ -10,9 +10,6 @@
 
 #include "Tickets.h"
 
-/**
- * The Output class allows output of various values to the console
- */
 class Output {
 public:
 	// Output list of tickets
@@ -26,4 +23,4 @@ private:
 	Output();
 };
 
-#endif /* OUTPUT_H_ */
+#endif

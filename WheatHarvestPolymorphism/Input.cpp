@@ -10,6 +10,13 @@
 
 #include "Input.h"
 
+// Enumerated type for the type of grain
+enum Type {
+	WHEAT = 'w',
+	MILO = 'g',
+	SOYBEAN = 's'
+};
+
 /*
 	Function inputTickets encapsulates the input of tickets
 
@@ -24,6 +31,7 @@ void Input::inputTickets(Tickets& tickets) {
 
 		std::string number;
 		double inputGrossWeight, inputTareWeight, inputMoistureLevel, inputForeignMaterial;
+		char grainType;
 
 		std::cout << "Ticket Number " << tickets.size() + 1 << " (alphanumeric): ";
 		std::getline(std::cin, number);
@@ -42,8 +50,23 @@ void Input::inputTickets(Tickets& tickets) {
 		std::cout << "Foreign Material (\%): ";
 		std::cin >> inputForeignMaterial;
 
-		Ticket proposedTicket(number, inputGrossWeight, inputTareWeight, Grain(inputMoistureLevel,
-				inputForeignMaterial));
+		std::cout << "Grain type (w)heat, (s)oybean, (g)rain sorghum: ";
+		std::cin >> grainType;
+
+		Ticket proposedTicket;
+		switch(grainType) {
+			case WHEAT:
+				proposedTicket = Ticket(number, inputGrossWeight, inputTareWeight, new Wheat(inputMoistureLevel, inputForeignMaterial));
+				break;
+			case MILO:
+				proposedTicket = Ticket(number, inputGrossWeight, inputTareWeight, new Milo(inputMoistureLevel, inputForeignMaterial));
+				break;
+			case SOYBEAN:
+				proposedTicket = Ticket(number, inputGrossWeight, inputTareWeight, new Soybean(inputMoistureLevel, inputForeignMaterial));
+				break;
+			default:
+				proposedTicket = Ticket(number, inputGrossWeight, inputTareWeight, new Wheat(inputMoistureLevel, inputForeignMaterial));
+		}
 
 		if (tickets.size() > 0) {
 			bool duplicate = false;

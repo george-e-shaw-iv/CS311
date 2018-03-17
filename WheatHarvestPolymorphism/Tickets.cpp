@@ -51,6 +51,7 @@ const Tickets& Tickets::operator =(const Tickets& tickets) {
 		return *this;
 	}
 
+	delete[] this->ticketArray;
 	this->ticketArray = new Ticket[tickets.ticketArrayCapacity];
 
 	for(unsigned int i = 0; i < tickets.ticketArraySize; i++) {

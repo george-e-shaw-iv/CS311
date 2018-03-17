@@ -31,7 +31,7 @@ std::ostream& operator<<(std::ostream &os, const Ticket &t) {
 	Ticket default constructor sets the timestamp member variable to the current
 	time and the rest of the member variables to 0 values.
 */
-Ticket::Ticket() : number(""), grossWeight(0), tareWeight(0) {
+Ticket::Ticket() : number(""), grossWeight(0), tareWeight(0), sample(nullptr) {
    time(&this->timestamp);
 }
 
@@ -84,9 +84,79 @@ double Ticket::getMoistureLevel() const {
  *
  * @return void
  */
-Ticket::Ticket(const std::string& number, const int grossWeight, const int tareWeight, const Grain& sample) :
-	number(number), grossWeight(grossWeight), tareWeight(tareWeight), sample(sample) {
+Ticket::Ticket(const std::string& number, const int grossWeight, const int tareWeight, Grain* sample) :
+	number(number), grossWeight(grossWeight), tareWeight(tareWeight) {
+		this->sample = sample->clone();
       time(&this->timestamp);
+}
+
+/*
+	Ticket copy constructor allows a new instance of the class to be
+	initailized with another ticket class as a parameter.
+
+	@param "ticket" of type Ticket
+		The class to copy into the new instance of the class
+*/
+Ticket::Ticket(const Ticket& ticket) {
+	if(ticket->sample == nullptr) {
+		this->sample == nullptr;
+	} else {
+		this->sample = ticket.sample->clone();
+	}
+
+	this->timestamp = ticket.timestamp;
+	this->number = ticket.number;
+	this->grossWeight = ticket.grossWeight;
+	this->tareWeight = ticket.tareWeight;
+}
+
+/*
+	Overloaded ticket assignment operator allows a new instance of
+	the class to be copied into the left side of the equals sign
+
+	@param "ticket" of type Ticket
+		The old instance of the class ready to be assigned
+*/
+const Ticket& Ticket::operator =(const Ticket& ticket) {
+	if(&ticket == this) {
+		return *this;
+	}
+
+	delete this->sample;
+
+	if(ticket->sample == nullptr) {
+		this->sample = nullptr;
+	} else {
+		this->sample = ticket.sample->clone();
+	}
+
+	this->timestamp = ticket.timestamp;
+	this->grossWeight = ticket.grossWeight;
+	this->tareWeight = ticket.tareWeight;
+	this->number = ticket.number;
+}
+
+/*
+	Ticket class deconstructor to delete values in free memory
+*/
+Ticket::~Ticket() {
+	if(this->sample != nullptr) {
+		delete this->sample;
+	}
+}
+
+/*
+	Function getSample returns a copy of the sample value
+
+	@return Grain
+		The copy of the class sample
+*/
+Grain* Ticket::getSample() const {
+	if(this->sample != nullptr) {
+		return this->sample->clone();
+	} else {
+		return nullptr;
+	}
 }
 
 /*
@@ -119,7 +189,7 @@ std::string Ticket::toString() const {
 	ss.precision(2);
 	ss << std::fixed;
 
-	ss << "Ticket " << this->number << " - " << buff << ":" << std::endl;
+	ss << this->sample->toString() << " Ticket " << this->number << " - " << buff << ":" << std::endl;
 	ss << "\t" << this->grossWeight << " Gross Weight" << std::endl;
 	ss << "\t" << this->tareWeight << " Tare Weight" << std::endl;
 	ss << "\t" << this->calculateNetWeight() << " Net Weight" << std::endl << std::endl;

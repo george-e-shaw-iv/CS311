@@ -21,7 +21,19 @@ public:
 
 	// Constructor allowing caller to specify a ticket's number,
 	//  gross weight (lbs), tare weight (lbs), and grain sample
-	Ticket(const std::string& number, const int grossWeight, const int tareWeight, const Grain& sample);
+	Ticket(const std::string& number, const int grossWeight, const int tareWeight, Grain* sample);
+
+	// Copy constructor
+	Ticket(const Ticket& ticket);
+
+	// Overloaded assignment operator
+	const Ticket& operator =(const Ticket& ticket);
+
+	// Deconstructor
+	~Ticket();
+
+	// Accessor to return a copy of the sample
+	Grain* getSample() const;
 
 	// Accessor to return timestamp
 	std::time_t getTimestamp() const;
@@ -71,7 +83,7 @@ private:
 	std::string number;
 	int grossWeight;
 	int tareWeight;
-	Grain sample;
+	Grain *sample;
 };
 
 #endif

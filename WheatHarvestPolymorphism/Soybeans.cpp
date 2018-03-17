@@ -4,7 +4,7 @@
  *	Student ID: G829G576
  *	Assignment Number: 5
  */
- 
+
 #include "Soybeans.h"
 
 namespace {
@@ -22,7 +22,7 @@ Soybeans::Soybeans() : Grain(0, 0)
 /*
 	Overloaded constructor for class soybeans which uses constructor delegation
 	to make use of its parent class, grain.
-	
+
 	@param "moistureLevel" of type double
 		The value to initailize member variable moistureLevel
 	@param "foreignMaterial" of type double
@@ -33,19 +33,19 @@ Soybeans::Soybeans(double moistureLevel, double foreignMaterial) : Grain(moistur
 
 /*
 	Function clone returns a copy of pointer to the calling object
-	
+
 	@return &Soybeans
 		A copy of the pointer of the calling object.
 */
 &Soybeans Soybeans::clone() const {
-	that = *this;
-	return &that;
+	that = &this;
+	return *that;
 }
 
 /*
 	Function getType gets the string representation of the calling object's
 	class name
-	
+
 	@return sting
 		"Soybeans", the name of the class
 */
@@ -56,7 +56,7 @@ std::string Soybeans::getType() const {
 /*
 	Function getIdealMoistureLevel returns the constant ideal moisture level
 	of soybeans
-	
+
 	@return const double
 		The ideal moisture level of soybeans
 */
@@ -67,7 +67,7 @@ const double Soybeans::getIdealMoistureLevel() const {
 /*
 	Function getAverageTestWeight returns the constant average test weight
 	of soybeans
-	
+
 	@return const double
 		The average test weight of soybeans
 */

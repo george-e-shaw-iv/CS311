@@ -34,7 +34,7 @@ public:
 	double getForeignMaterial() const;
 
 	// Pure virtual function to return a copy of the calling object
-	virtual &Grain clone() const = 0;
+	virtual Grain* clone() const = 0;
 
 	// Pure virtual function to get string representation of the calling object's grain type
 	virtual std::string getType() const = 0;

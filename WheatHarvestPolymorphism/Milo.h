@@ -11,6 +11,7 @@
 #include "Grain.h"
 
 class Milo : public Grain {
+	public:
 	// Default constructor definition
 	Milo();
 	
@@ -18,7 +19,7 @@ class Milo : public Grain {
 	Milo(double moistureLevel, double foreignMaterial);
 	
 	// Return a clone of the object
-	&Milo clone() const;
+	Milo* clone() const;
 	
 	// Returns the string representation of the derived class name
 	std::string getType() const;
@@ -28,6 +29,6 @@ class Milo : public Grain {
 	
 	// Returns the constant for average test weight per bushel for milo
 	const double getAverageTestWeight() const;
-}
+};
 
 #endif

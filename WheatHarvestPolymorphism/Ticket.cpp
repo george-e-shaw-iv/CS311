@@ -53,7 +53,7 @@ std::time_t Ticket::getTimestamp() const {
 		The foreign material percentage of the grain member variable
 */
 double Ticket::getForeignMaterial() const {
-   return this->sample.getForeignMaterial();
+   return this->sample->getForeignMaterial();
 }
 
 /*
@@ -64,7 +64,7 @@ double Ticket::getForeignMaterial() const {
 		The moisture level percentage of the grain member variable
 */
 double Ticket::getMoistureLevel() const {
-   return this->sample.getMoistureLevel();
+   return this->sample->getMoistureLevel();
 }
 
 /*
@@ -98,8 +98,8 @@ Ticket::Ticket(const std::string& number, const int grossWeight, const int tareW
 		The class to copy into the new instance of the class
 */
 Ticket::Ticket(const Ticket& ticket) {
-	if(ticket->sample == nullptr) {
-		this->sample == nullptr;
+	if(ticket.sample == nullptr) {
+		this->sample = nullptr;
 	} else {
 		this->sample = ticket.sample->clone();
 	}
@@ -124,7 +124,7 @@ const Ticket& Ticket::operator =(const Ticket& ticket) {
 
 	delete this->sample;
 
-	if(ticket->sample == nullptr) {
+	if(ticket.sample == nullptr) {
 		this->sample = nullptr;
 	} else {
 		this->sample = ticket.sample->clone();
@@ -134,15 +134,15 @@ const Ticket& Ticket::operator =(const Ticket& ticket) {
 	this->grossWeight = ticket.grossWeight;
 	this->tareWeight = ticket.tareWeight;
 	this->number = ticket.number;
+
+	return *this;
 }
 
 /*
 	Ticket class deconstructor to delete values in free memory
 */
 Ticket::~Ticket() {
-	if(this->sample != nullptr) {
-		delete this->sample;
-	}
+	delete this->sample;
 }
 
 /*
@@ -251,7 +251,7 @@ int Ticket::calculateNetWeight() const {
  *		pounds per bushel, which is 60.
  */
 double Ticket::calculateGrossBushels() const {
-	return (this->calculateNetWeight() / this->sample.getAverageTestWeight());
+	return (this->calculateNetWeight() / this->sample->getAverageTestWeight());
 }
 
 /*
@@ -264,11 +264,11 @@ double Ticket::calculateGrossBushels() const {
  *		the member variable "moistureLevel" subtract 12.
  */
 double Ticket::calculateMoistureDockage() const {
-	if(this->getMoistureLevel() <= this->sample.getIdealMoistureLevel()) {
+	if(this->getMoistureLevel() <= this->sample->getIdealMoistureLevel()) {
 		return 0;
 	}
 
-	return (this->calculateGrossBushels() * ((this->getMoistureLevel() - this->sample.getIdealMoistureLevel())/100));
+	return (this->calculateGrossBushels() * ((this->getMoistureLevel() - this->sample->getIdealMoistureLevel())/100));
 }
 
 /*

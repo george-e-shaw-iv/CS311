@@ -39,7 +39,7 @@ void Output::outputSummary(const Tickets& tickets) {
 	}
 
 	std::cout.precision(2);
-	std::cout << std::fixed << "Wheat Harvest Summary Totals" << std::endl;
+	std::cout << std::fixed << "Harvest Summary Totals" << std::endl;
 	std::cout << "\t" << grossBushels << " Gross Bushels" << std::endl;
 	std::cout << "\t" << netBushels << " Net Bushels" << std::endl;
 

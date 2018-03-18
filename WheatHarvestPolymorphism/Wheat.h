@@ -11,6 +11,7 @@
 #include "Grain.h"
 
 class Wheat : public Grain {
+	public:
 	// Default constructor definition
 	Wheat();
 	
@@ -18,7 +19,7 @@ class Wheat : public Grain {
 	Wheat(double moistureLevel, double foreignMaterial);
 	
 	// Return a clone of the object
-	&Wheat clone() const;
+	Wheat* clone() const;
 	
 	// Returns the string representation of the derived class name
 	std::string getType() const;
@@ -28,6 +29,6 @@ class Wheat : public Grain {
 	
 	// Returns the constant for average test weight per bushel for wheat
 	const double getAverageTestWeight() const;
-}
+};
 
 #endif

@@ -34,12 +34,11 @@ Soybeans::Soybeans(double moistureLevel, double foreignMaterial) : Grain(moistur
 /*
 	Function clone returns a copy of pointer to the calling object
 
-	@return &Soybeans
+	@return Soybeans
 		A copy of the pointer of the calling object.
 */
-&Soybeans Soybeans::clone() const {
-	that = &this;
-	return *that;
+Soybeans* Soybeans::clone() const {
+	return new Soybeans(*this);
 }
 
 /*

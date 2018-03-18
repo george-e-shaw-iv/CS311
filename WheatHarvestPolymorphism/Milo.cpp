@@ -34,12 +34,11 @@ Milo::Milo(double moistureLevel, double foreignMaterial) : Grain(moistureLevel, 
 /*
 	Function clone returns a copy of pointer to the calling object
 
-	@return &Milo
+	@return Milo
 		A copy of the pointer of the calling object.
 */
-&Milo Milo::clone() const {
-	that = &this;
-	return *that;
+Milo* Milo::clone() const {
+	return new Milo(*this);
 }
 
 /*

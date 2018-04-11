@@ -53,7 +53,11 @@ std::time_t Ticket::getTimestamp() const {
 		The foreign material percentage of the grain member variable
 */
 double Ticket::getForeignMaterial() const {
-   return this->sample->getForeignMaterial();
+	if(this->sample != nullptr) {
+  	return this->sample->getForeignMaterial();
+ 	} else {
+		return 0;
+	}
 }
 
 /*
@@ -64,7 +68,11 @@ double Ticket::getForeignMaterial() const {
 		The moisture level percentage of the grain member variable
 */
 double Ticket::getMoistureLevel() const {
-   return this->sample->getMoistureLevel();
+	if(this->sample != nullptr) {
+  	return this->sample->getMoistureLevel();
+ 	} else {
+		return 0;
+	}
 }
 
 /*
@@ -86,7 +94,9 @@ double Ticket::getMoistureLevel() const {
  */
 Ticket::Ticket(const std::string& number, const int grossWeight, const int tareWeight, std::time_t timestamp, Grain* sample) :
 	number(number), grossWeight(grossWeight), tareWeight(tareWeight), timestamp(timestamp)  {
-		this->sample = sample->clone();
+		if(this->sample != nullptr) {
+			this->sample = sample->clone();
+		}
 }
 
 /*
@@ -121,7 +131,9 @@ const Ticket& Ticket::operator =(const Ticket& ticket) {
 		return *this;
 	}
 
-	delete this->sample;
+	if(this->sample != nullptr) {
+		delete this->sample;
+	}
 
 	if(ticket.sample == nullptr) {
 		this->sample = nullptr;
@@ -141,7 +153,9 @@ const Ticket& Ticket::operator =(const Ticket& ticket) {
 	Ticket class deconstructor to delete values in free memory
 */
 Ticket::~Ticket() {
-	delete this->sample;
+	if(this->sample != nullptr) {
+		delete this->sample;
+	}
 }
 
 /*
@@ -188,7 +202,13 @@ std::string Ticket::toString() const {
 	ss.precision(2);
 	ss << std::fixed;
 
-	ss << this->sample->toString() << " Ticket " << this->number << " - " << buff << ":" << std::endl;
+	if(this->sample != nullptr) {
+		ss << this->sample->toString();
+	} else {
+		ss << "Unknown Grain Type";
+	}
+
+	ss << " Ticket " << this->number << " - " << buff << ":" << std::endl;
 	ss << "\t" << this->grossWeight << " Gross Weight" << std::endl;
 	ss << "\t" << this->tareWeight << " Tare Weight" << std::endl;
 	ss << "\t" << this->calculateNetWeight() << " Net Weight" << std::endl << std::endl;
@@ -242,7 +262,12 @@ std::string Ticket::getRecord() const {
  	ss.precision(2);
  	ss << std::fixed;
 
-	ss << this->sample->toString() << "|";
+	if(this->sample != nullptr) {
+		ss << this->sample->toString() << "|";
+	} else {
+		ss << "Unknown Grain Type|";
+	}
+
 	ss << date << "|";
 	ss << timestamp << "|";
 	ss << this->number << "|";
@@ -297,7 +322,11 @@ int Ticket::calculateNetWeight() const {
  *		pounds per bushel, which is 60.
  */
 double Ticket::calculateGrossBushels() const {
-	return (this->calculateNetWeight() / this->sample->getAverageTestWeight());
+	if(this->sample != nullptr) {
+		return (this->calculateNetWeight() / this->sample->getAverageTestWeight());
+	} else {
+		return 0;
+	}
 }
 
 /*
@@ -314,7 +343,11 @@ double Ticket::calculateMoistureDockage() const {
 		return 0;
 	}
 
-	return (this->calculateGrossBushels() * ((this->getMoistureLevel() - this->sample->getIdealMoistureLevel())/100));
+	if(this->sample != nullptr) {
+		return (this->calculateGrossBushels() * ((this->getMoistureLevel() - this->sample->getIdealMoistureLevel())/100));
+	} else {
+		return 0;
+	}
 }
 
 /*

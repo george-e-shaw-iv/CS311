@@ -15,7 +15,7 @@
 #include "Input.h"
 #include "Wheat.h"
 #include "Milo.h"
-#include "Soybeans.h"
+#include "Soybean.h"
 
 enum columnType {
 	type = 0,
@@ -144,16 +144,19 @@ void Input::inputTickets(Tickets& tickets) {
 				{
 					Grain *w = new Wheat(inputMoistureLevel, inputForeignMaterial);
 					proposedTicket = Ticket(inputNumber, inputGrossWeight, inputTareWeight, t, w);
+					delete w;
 				}
 			} else if(inputType == "Soybean") {
 				{
-					Grain *s = new Soybeans(inputMoistureLevel, inputForeignMaterial);
+					Grain *s = new Soybean(inputMoistureLevel, inputForeignMaterial);
 					proposedTicket = Ticket(inputNumber, inputGrossWeight, inputTareWeight, t, s);
+					delete s;
 				}
 			} else if(inputType == "Grain Sorghum") {
 				{
 					Grain *m = new Milo(inputMoistureLevel, inputForeignMaterial);
 					proposedTicket = Ticket(inputNumber, inputGrossWeight, inputTareWeight, t, m);
+					delete m;
 				}
 			} else {
 				failed = true;

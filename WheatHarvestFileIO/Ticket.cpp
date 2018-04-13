@@ -94,8 +94,10 @@ double Ticket::getMoistureLevel() const {
  */
 Ticket::Ticket(const std::string& number, const int grossWeight, const int tareWeight, std::time_t timestamp, Grain* sample) :
 	number(number), grossWeight(grossWeight), tareWeight(tareWeight), timestamp(timestamp)  {
-		if(sample != nullptr) {
+		if(sample) {
 			this->sample = sample->clone();
+		} else {
+			this->sample = nullptr;
 		}
 }
 

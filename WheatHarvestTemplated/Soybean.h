@@ -2,7 +2,7 @@
  *	File Name: Soybean.h
  *	Author: George Shaw
  *	Student ID: G829G576
- *	Assignment Number: 6
+ *	Assignment Number: 7
  */
 
 #ifndef SOYBEAN_H_
@@ -29,6 +29,9 @@ class Soybean : public Grain {
 
 	// Returns the constant for average test weight per bushel for Soybean
 	const double getAverageTestWeight() const;
+
+	// Converts type to a defined integer
+	int getTypeValue() const;
 };
 
 #endif

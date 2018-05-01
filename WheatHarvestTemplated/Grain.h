@@ -2,7 +2,7 @@
  *	File Name: Grain.h
  *	Author: George Shaw
  *	Student ID: G829G576
- *	Assignment Number: 6
+ *	Assignment Number: 7
  */
 
 #ifndef GRAIN_H_
@@ -41,6 +41,9 @@ public:
 
 	// Defined member function to make use of the pure virtual function getType
 	std::string toString() const;
+
+	// Converts type to a defined integer
+	virtual int getTypeValue() const = 0;
 
 protected:
 	// Member variables

@@ -2,7 +2,7 @@
  *	File Name: Soybean.cpp
  *	Author: George Shaw
  *	Student ID: G829G576
- *	Assignment Number: 6
+ *	Assignment Number: 7
  */
 
 #include "Soybean.h"
@@ -72,4 +72,9 @@ const double Soybean::getIdealMoistureLevel() const {
 */
 const double Soybean::getAverageTestWeight() const {
 	return AVG_TEST_WEIGHT;
+}
+
+// Converts type to a defined integer
+int Soybean::getTypeValue() const {
+	return 2;
 }

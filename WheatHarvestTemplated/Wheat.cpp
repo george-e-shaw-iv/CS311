@@ -2,7 +2,7 @@
  *	File Name: Wheat.cpp
  *	Author: George Shaw
  *	Student ID: G829G576
- *	Assignment Number: 6
+ *	Assignment Number: 7
  */
 
 #include "Wheat.h"
@@ -72,4 +72,9 @@ const double Wheat::getIdealMoistureLevel() const {
 */
 const double Wheat::getAverageTestWeight() const {
 	return AVG_TEST_WEIGHT;
+}
+
+// Converts type to a defined integer
+int Wheat::getTypeValue() const {
+	return 1;
 }

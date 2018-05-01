@@ -2,7 +2,7 @@
  * File Name: Output.cpp
  * Author: George Shaw
  * Student ID: G829G576
- * Assignment Number: 6
+ * Assignment Number: 7
  */
 
 #include <iostream>
@@ -17,7 +17,7 @@
 	@param "tickets" of type Tickets
 		The tickets class to output
 */
-void Output::outputTickets(const Tickets& tickets) {
+void Output::outputTickets(const ContainerTemplate::Array<Ticket>& tickets) {
 	std::ofstream outputFile;
 	outputFile.open("HarvestTicketReceipts.txt", std::ios::out | std::ios::trunc);
 

@@ -2,7 +2,7 @@
  * File Name: Input.cpp
  * Author: George Shaw
  * Student ID: G829G576
- * Assignment Number: 6
+ * Assignment Number: 7
  */
 
 #include <iostream>
@@ -34,7 +34,7 @@ enum columnType {
 	@param "tickets" of type Tickets
 		The tickets class to input the tickets into
 */
-void Input::inputTickets(Tickets& tickets) {
+void Input::inputTickets(ContainerTemplate::Array<Ticket>& tickets) {
 	std::ifstream inputFile;
 	int column;
 	inputFile.open("HarvestTickets.txt", std::ios::in);

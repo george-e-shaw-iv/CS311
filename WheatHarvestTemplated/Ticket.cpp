@@ -2,7 +2,7 @@
  * File Name: Ticket.cpp
  * Author: George Shaw
  * Student ID: G829G576
- * Assignment Number: 6
+ * Assignment Number: 7
  */
 
 #include <sstream>
@@ -25,6 +25,15 @@
 std::ostream& operator<<(std::ostream &os, const Ticket &t) {
 	os << t.toString();
 	return os;
+}
+
+// Overloaded relational operator <
+bool operator <(const Ticket& ticket1, const Ticket& ticket2) {
+	if(ticket1.calculateNetBushels() < ticket2.calculateNetBushels()) {
+		return true;
+	} else {
+		return false;
+	}
 }
 
 /*

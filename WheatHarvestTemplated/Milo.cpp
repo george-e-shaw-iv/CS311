@@ -2,7 +2,7 @@
  *	File Name: Milo.cpp
  *	Author: George Shaw
  *	Student ID: G829G576
- *	Assignment Number: 6
+ *	Assignment Number: 7
  */
 
 #include "Milo.h"
@@ -72,4 +72,9 @@ const double Milo::getIdealMoistureLevel() const {
 */
 const double Milo::getAverageTestWeight() const {
 	return AVG_TEST_WEIGHT;
+}
+
+// Converts type to a defined integer
+int Milo::getTypeValue() const {
+	return 3;
 }

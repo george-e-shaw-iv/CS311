@@ -2,7 +2,7 @@
  *	File Name: Ticket.h
  *	Author: George Shaw
  *	Student ID: G829G576
- *	Assignment Number: 6
+ *	Assignment Number: 7
  */
 
 #ifndef TICKET_H_
@@ -79,6 +79,12 @@ public:
 
 	// Overloaded equality operator ==
 	bool operator ==(const Ticket& ticket) const;
+
+	// Overloaded relational operator <
+	friend bool operator <(const Ticket& ticket1, const Ticket& ticket2);
+
+	// Sort friend function
+	friend bool sort(const Ticket& ticket1, const Ticket& ticket2);
 
 	// Overloaded insertion operator <<
 	friend std::ostream& operator <<(std::ostream& os, const Ticket& tickets);

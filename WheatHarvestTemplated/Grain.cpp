@@ -2,7 +2,7 @@
  * File Name: Grain.cpp
  * Author: George Shaw
  * Student ID: G829G576
- * Assignment Number: 6
+ * Assignment Number: 7
  */
 
 #include "Grain.h"
